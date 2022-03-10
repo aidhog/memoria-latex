@@ -61,12 +61,14 @@
 %% Agregar la bibliografía al índice
 \let\oldbib\bibliography
 \renewcommand{\bibliography}[1]{%
-	\oldbib{#1}%
+	\cleardoublepage
+	\phantomsection
 	\if@en
 		\addcontentsline{toc}{chapter}{\protect\numberline{}Bibliography}%
 	\else
 		\addcontentsline{toc}{chapter}{\protect\numberline{}Bibliograf\'ia}%
 	\fi
+	\oldbib{#1}%
 }
 \addto\captionsspanish{\renewcommand\listtablename{Índice de Tablas}}
 \addto\captionsspanish{\renewcommand\listfigurename{Índice de Ilustraciones}}
