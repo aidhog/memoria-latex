@@ -32,6 +32,12 @@
 
 \usepackage{lipsum}
 
+%%% apendices -> anexos
+\addto\captionsspanish{%
+  \renewcommand\appendixname{Anexo}
+  \renewcommand\appendixpagename{Anexos}
+}
+
 \begin{document}
 
 \frontmatter
@@ -75,7 +81,21 @@ Una dedicatoria corta.
 \bibliography{bibliografia}
 
 % opcional ...
+
+% crea linea Anexos en tabla de contenidos
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\protect{}Anexos}
+
 \begin{appendices}
-\input{anexoA.tex}
+    % Agrega el titulo ANEXOS
+    \let\oldclearpage\clearpage
+    \cleardoublepage
+    \let\clearpage\relax
+    \vspace*{50pt} % espacio al inicio de un capitulo
+    \noindent{ \huge\bfseries ANEXOS\par}
+    \input{anexoA.tex} % primer anexo
+    \let\clearpage\oldclearpage
+    % inserte aqui el resto de anexos
 \end{appendices}
 \end{document}
